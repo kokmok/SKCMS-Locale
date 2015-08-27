@@ -1,6 +1,6 @@
 <?php
 
-namespace SKCMS\LocaleBundle\Entity;
+namespace LE\LocaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -31,6 +31,15 @@ class Address {
      */
     private $street;
 
+    /**
+     * @var string
+     * @Assert\NotNull
+     * @Assert\Type(type="string")
+     * @Assert\Length(min = "1", max = "255")
+     * @ORM\Column(name="streetNumber", type="string", length=255)
+     */
+    private $streetNumber;
+    
     /**
      * @var string
      * @Assert\NotNull
@@ -197,7 +206,7 @@ class Address {
      * 
      * @return Address
      */
-    public function setCountry(\SKCMS\LocaleBundle\Entity\Country $country = null)
+    public function setCountry(\LE\LocaleBundle\Entity\Country $country = null)
     {
         $this->country = $country;
 
@@ -211,5 +220,28 @@ class Address {
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set streetNumber
+     *
+     * @param string $streetNumber
+     * @return Address
+     */
+    public function setStreetNumber($streetNumber)
+    {
+        $this->streetNumber = $streetNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get streetNumber
+     *
+     * @return string 
+     */
+    public function getStreetNumber()
+    {
+        return $this->streetNumber;
     }
 }
