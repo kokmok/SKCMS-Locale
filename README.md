@@ -45,3 +45,12 @@ framework:
 
 Now all you have to do is modify a bit tyour tranlatable entities adn repositories (look how it's done in SKCMS\LocaleBundle\Country ). 
 
+
+Credits :
+datas come from :
+countries : https://github.com/mledoze/countries
+currencies : https://github.com/datasets/currency-codes
+languages : http://pastebin.com/raw.php?i=ppdMS687
+
+
+
