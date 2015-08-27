@@ -1,0 +1,4 @@
+services:
+#    le_locale.example:
+#        class: SKCMS\LocaleBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

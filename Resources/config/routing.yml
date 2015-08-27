@@ -1,0 +1,3 @@
+le_locale_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: LELocaleBundle:Default:index }
