@@ -48,6 +48,10 @@ class Language
      * @ORM\Column(name="active",type="boolean")
      */
     private $active;
+    
+    public function __construct() {
+        $this->active = false;
+    }
 
 
     /**

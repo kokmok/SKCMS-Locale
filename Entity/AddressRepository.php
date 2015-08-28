@@ -1,6 +1,6 @@
 <?php
 
-namespace LE\CoreBundle\Entity;
+namespace SKCMS\LocaleBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

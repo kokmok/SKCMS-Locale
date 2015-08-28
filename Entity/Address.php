@@ -1,6 +1,6 @@
 <?php
 
-namespace LE\LocaleBundle\Entity;
+namespace SKCMS\LocaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Address
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SKCMS\LocaleBundle\Entity\AddressRepository")
  */
 class Address {
 
