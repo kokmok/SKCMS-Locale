@@ -34,8 +34,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $jsonCountries = json_decode(file_get_contents(__DIR__.self::COUNTRIES_FILE),true);
         
-        $languagesRepo = $em->getRepository('LELocaleBundle:Language');
-        $currencyRepo = $em->getRepository('LELocaleBundle:Currency');
+        $languagesRepo = $em->getRepository('SKCMSLocaleBundle:Language');
+        $currencyRepo = $em->getRepository('SKCMSLocaleBundle:Currency');
         
         
         $locales = ['en','nl','es','it','pt'];
