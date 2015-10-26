@@ -29,7 +29,7 @@
 
 "symfony/framework-bundle":         ">=2.3-dev",
 "doctrine/doctrine-bundle":         "*",
-"stof/doctrine-extensions-bundle": "dev-master@dev"
+"stof/doctrine-extensions-bundle": "dev-master"
 
 
 
