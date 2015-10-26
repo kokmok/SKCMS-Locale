@@ -145,6 +145,12 @@ class Country extends TranslatableEntity
     {
         return $this->iSO;
     }
+    
+    
+    public function __toString()
+    {
+        return implode(',',$this->nativeNames);
+    }
     /**
      * Constructor
      */
