@@ -147,9 +147,18 @@ class Country extends TranslatableEntity
     }
     
     
-    public function __toString()
+     public function __toString()
     {
-        return implode(',',$this->nativeNames);
+        
+        if (null !== $this->nativeNames && count($this->nativeNames))
+        {
+            return implode(',',$this->nativeNames->toArray());
+        }
+        else
+        {
+            return $this->name;
+        }
+        
     }
     /**
      * Constructor
