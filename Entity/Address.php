@@ -206,7 +206,7 @@ class Address {
      * 
      * @return Address
      */
-    public function setCountry(\LE\LocaleBundle\Entity\Country $country = null)
+    public function setCountry(\SKCMS\LocaleBundle\Entity\Country $country = null)
     {
         $this->country = $country;
 
