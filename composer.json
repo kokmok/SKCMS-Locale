@@ -27,9 +27,9 @@
 
 "php": ">=5.3.2",
 
-"symfony/framework-bundle":         ">=2.3-dev",
+"symfony/framework-bundle":         ">=2.3",
 "doctrine/doctrine-bundle":         "*",
-"stof/doctrine-extensions-bundle": "dev-master"
+"stof/doctrine-extensions-bundle": "1.2.1"
 
 
 
@@ -42,8 +42,6 @@
 
 },
 
-"target-dir": "SKCMS/LocaleBundle",
-
-"minimum-stability":   "dev"
+"target-dir": "SKCMS/LocaleBundle"
 
 }
