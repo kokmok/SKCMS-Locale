@@ -29,7 +29,7 @@
 
 "symfony/framework-bundle":         ">=2.3",
 "doctrine/doctrine-bundle":         "*",
-"stof/doctrine-extensions-bundle": "1.2.1"
+"stof/doctrine-extensions-bundle": "*"
 
 
 
