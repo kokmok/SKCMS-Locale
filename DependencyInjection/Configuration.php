@@ -18,8 +18,18 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('le_locale');
-
+        $rootNode = $treeBuilder->root('skcms_locale');
+        $rootNode   ->children()
+                        ->arrayNode('locales')
+                            ->defaultValue(['en'])
+                            ->prototype('scalar')
+                            ->end()
+                        ->end()
+                        ->scalarNode('translation_format')
+                            ->defaultValue('yml')
+                        ->end()
+                    ->end()
+            ;
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.

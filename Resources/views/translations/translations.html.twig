@@ -1,0 +1,21 @@
+{#<ul>#}
+    {#{% for child in translations %}#}
+        {#<li></li>#}
+    {#{% endfor %}#}
+{#</ul>#}
+
+{{ _self.displayChildren(translations) }}
+
+{% macro displayChildren(array) %}
+    <ul>
+    {% for childKey,child in array %}
+        {% if child is iterable %}
+        <li>
+            {{ childKey }}
+            {{ _self.displayChildren(child) }}
+
+        </li>ls 
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endmacro %}
