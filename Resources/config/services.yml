@@ -1,4 +1,4 @@
 services:
-    skcms_locale.files.loader:
+    skcms_locale.translations.loader:
         class: SKCMS\LocaleBundle\Loader\TranslationFilesLoader
-        arguments: [%kernel.root_dir%,%skcms.locale.translation_format%,%skcms.locale.locales%]
+        arguments: [%kernel.root_dir%,%skcms.locale.translation_format%,%skcms.locale.locales%,@form.factory]

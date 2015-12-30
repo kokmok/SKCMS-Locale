@@ -4,17 +4,30 @@
     {#{% endfor %}#}
 {#</ul>#}
 
+{% block menu %}
 {{ _self.displayChildren(translations) }}
+{% endblock menu %}
 
-{% macro displayChildren(array) %}
+{% block form %}
+    <form action="" method="post">
+        {{ form_widget(form)}}
+    </form>
+
+{% endblock form %}
+
+
+
+
+
+
+{% macro displayChildren(array,path) %}
     <ul>
     {% for childKey,child in array %}
         {% if child is iterable %}
         <li>
-            {{ childKey }}
-            {{ _self.displayChildren(child) }}
-
-        </li>ls 
+            <a href="{{ path('skcms_locale_homepage',{path:path~childKey}) }}">{{ childKey }}</a>
+            {{ _self.displayChildren(child,path~childKey~'/--/') }}
+        </li>
         {% endif %}
     {% endfor %}
     </ul>

@@ -1,0 +1,5 @@
+skcms_locale_homepage:
+    path:     /translations/{path}
+    defaults: { _controller: SKCMSLocaleBundle:ShortTranslation:index,path: null }
+    requirements:
+        path: ^.+$
