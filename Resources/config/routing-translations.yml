@@ -1,5 +1,12 @@
 skcms_locale_homepage:
-    path:     /translations/{path}
-    defaults: { _controller: SKCMSLocaleBundle:ShortTranslation:index,path: null }
+    path:     /translations/{forceJson}/{path}
+    defaults: { _controller: SKCMSLocaleBundle:ShortTranslation:index,forceJson: 0,path: null }
     requirements:
+        forceJson: ^0|1$
+        path: ^.+$
+skcms_locale_translations_form:
+    path:     /translations-form/{forceJson}/{path}
+    defaults: { _controller: SKCMSLocaleBundle:ShortTranslation:form,forceJson: 0,path: null }
+    requirements:
+        forceJson: ^0|1$
         path: ^.+$

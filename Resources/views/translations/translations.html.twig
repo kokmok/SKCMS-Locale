@@ -9,9 +9,7 @@
 {% endblock menu %}
 
 {% block form %}
-    <form action="" method="post">
-        {{ form_widget(form)}}
-    </form>
+    {% include 'SKCMSLocaleBundle:translations:form.html.twig' %}
 
 {% endblock form %}
 
