@@ -91,17 +91,20 @@ class TranslationFilesLoader
                 preg_match('#.+\/([a-zA-Z]+)\.[a-z]{2}\.'.$this->format.'$#',$file,$matches);
                 $domain = $matches[1];
                 $translations[$domain] = $this->formatTranslations(Yaml::parse($file),$locale);
-                $modifiedTranslations = array_replace_recursive($translations[$domain],$postedTree[self::FORM_NAME][$domain]);
-                foreach ($modifiedTranslations as $modifiedTranslationKey => $modifiedTranslationValue){
-                    if (!array_key_exists($modifiedTranslationKey,$translations[$domain])){
+                if (isset($postedTree[self::FORM_NAME][$domain])){
+                    $modifiedTranslations = array_replace_recursive($translations[$domain],$postedTree[self::FORM_NAME][$domain]);
+                    foreach ($modifiedTranslations as $modifiedTranslationKey => $modifiedTranslationValue){
+                        if (!array_key_exists($modifiedTranslationKey,$translations[$domain])){
 
-                        unset($modifiedTranslations[$modifiedTranslationKey]);
+                            unset($modifiedTranslations[$modifiedTranslationKey]);
+                        }
                     }
+
+                    $modifiedTranslations = $this->unformatTranslations($modifiedTranslations,$locale);
+
+                    file_put_contents($file,Yaml::dump($modifiedTranslations));
                 }
 
-                $modifiedTranslations = $this->unformatTranslations($modifiedTranslations,$locale);
-
-                file_put_contents($file,Yaml::dump($modifiedTranslations));
 
             }
 
@@ -191,6 +194,9 @@ class TranslationFilesLoader
 
 
 
+    public function getUntranslatedTree(){
+        return $this->unTranslatedTree;
+    }
     public function getTranslationTree(){
         return $this->translationTree;
     }

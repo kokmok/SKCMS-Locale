@@ -2,3 +2,7 @@ services:
     skcms_locale.translations.loader:
         class: SKCMS\LocaleBundle\Loader\TranslationFilesLoader
         arguments: [%kernel.root_dir%,%skcms.locale.translation_format%,%skcms.locale.locales%,@form.factory]
+    skcms_locale.twig.locale_extension:
+        class: SKCMS\LocaleBundle\Twig\LocaleExtension
+        tags:
+            - { name: twig.extension }
