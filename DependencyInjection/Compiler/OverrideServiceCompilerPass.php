@@ -21,7 +21,14 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
         }
 
         $this->logging->setClass('SKCMS\LocaleBundle\Logging\LoggingTranslator');
-        $eventDispatcher = $container->getDefinition('debug.event_dispatcher');
+        if ($container->hasDefinition('debug.event_dispatcher')){
+            $eventDispatcher = $container->getDefinition('debug.event_dispatcher');
+        }
+        elseif ($container->hasDefinition('event_dispatcher')){
+            $eventDispatcher = $container->getDefinition('event_dispatcher');
+        }
+        
+
 
         $this->logging->addMethodCall('setEventDispatcher',[$eventDispatcher]);
     }
