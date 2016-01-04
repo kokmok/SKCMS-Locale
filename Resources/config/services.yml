@@ -1,4 +1,10 @@
 services:
+    skcms_locale.events.missing_translation:
+        class: SKCMS\LocaleBundle\Event\MissingTranslationListener
+        arguments: [@service_container]
+        tags:
+            - { name: kernel.event_listener, event: skcms_missing_translation_event, method: missingEvent }
+
     skcms_locale.translations.loader:
         class: SKCMS\LocaleBundle\Loader\TranslationFilesLoader
         arguments: [%kernel.root_dir%,%skcms.locale.translation_format%,%skcms.locale.locales%,@form.factory]
