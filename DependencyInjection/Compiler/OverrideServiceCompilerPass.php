@@ -27,7 +27,7 @@ class OverrideServiceCompilerPass implements CompilerPassInterface
         elseif ($container->hasDefinition('event_dispatcher')){
             $eventDispatcher = $container->getDefinition('event_dispatcher');
         }
-        
+
 
 
         $this->logging->addMethodCall('setEventDispatcher',[$eventDispatcher]);

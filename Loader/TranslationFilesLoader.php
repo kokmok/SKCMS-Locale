@@ -92,6 +92,7 @@ class TranslationFilesLoader
                 $domain = $matches[1];
                 $translations[$domain] = $this->formatTranslations(Yaml::parse($file),$locale);
                 if (isset($postedTree[self::FORM_NAME][$domain])){
+
                     $modifiedTranslations = array_replace_recursive($translations[$domain],$postedTree[self::FORM_NAME][$domain]);
                     foreach ($modifiedTranslations as $modifiedTranslationKey => $modifiedTranslationValue){
                         if (!array_key_exists($modifiedTranslationKey,$translations[$domain])){
@@ -144,12 +145,11 @@ class TranslationFilesLoader
     private function unformatTranslations($translations,$locale){
         $tree = [];
         foreach ($translations as $translationKey => $translation){
-            if (is_array($translation)){
+            if (is_array($translation) && $translationKey !== $locale){
                 $tree[self::stringSanitizer($translationKey,true)] = $this->unformatTranslations($translation,$locale);
             }
-            else{
+            else if ($translationKey === $locale){
                 $tree = $translation;
-
             }
         }
         return $tree;
