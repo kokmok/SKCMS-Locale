@@ -118,8 +118,8 @@ class TranslationFilesLoader
 
     public static function stringSanitizer($input,$decode = false){
         $input = strip_tags($input);
-        $search = [' ','(',')','?','!',"'",'"','.'];
-        $replace = ['::e::','::opa::','::cpa::','::ipo::','::expo::','::sq::','::dq::','::p::'];
+        $search = [' ','(',')','?','!',"'",'"','.','/'];
+        $replace = ['::e::','::opa::','::cpa::','::ipo::','::expo::','::sq::','::dq::','::p::','::sl::'];
         if ($decode){
             return str_replace($replace,$search,$input);
         }
