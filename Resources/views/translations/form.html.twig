@@ -1,26 +1,13 @@
 {% form_theme form _self %}
 
-{%- block form_label -%}
-    {% if label is not same as(false) -%}
-        {% if not compound -%}
-            {% set label_attr = label_attr|merge({'for': id}) %}
-        {%- endif -%}
-        {% if required -%}
-            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-        {%- endif -%}
-        {% if label is empty -%}
-            {%- if label_format is not empty -%}
-                {% set label = label_format|replace({
-                '%name%': name,
-                '%id%': id,
-                }) %}
-            {%- else -%}
-                {% set label = name|humanize %}
-            {%- endif -%}
-        {%- endif -%}
-        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label }}</label>
-    {%- endif -%}
-{%- endblock form_label -%}
+{%- block form_row -%}
+    <div>
+        <label for="{{ form.vars.id }}">{{ form.vars.name|SKCMSLocaleTranslationDecode }}</label>
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock form_row -%}
+
 
 <form action="" method="post">
     {{ form_widget(form)}}
