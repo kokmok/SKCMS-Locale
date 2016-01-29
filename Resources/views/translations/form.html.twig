@@ -1,5 +1,20 @@
 {% form_theme form _self %}
+{%- block form -%}
+    {{ form_start(form) }}
+    {{- form_widget(form) -}}
+    {{ form_end(form) }}
+{%- endblock form -%}
 
+{%- block form_start -%}
+
+    <form name="{{ form.vars.name }}" method="post"action=""{% for attrname, attrvalue in form.vars.attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if form.vars.multipart %} enctype="multipart/form-data"{% endif %}>
+
+{%- endblock form_start -%}
+
+{%- block form_end -%}
+
+    </form>
+{%- endblock form_end -%}
 {%- block form_row -%}
     <div>
         <label for="{{ form.vars.id }}">{{ form.vars.name|SKCMSLocaleTranslationDecode }}</label>
@@ -9,6 +24,6 @@
 {%- endblock form_row -%}
 
 
-<form action="" method="post">
-    {{ form_widget(form)}}
-</form>
+{#<form action="" method="post">#}
+    {{ form(form)}}
+{#</form>#}
