@@ -23,7 +23,7 @@
     {% for childKey,child in array %}
         {% if child is iterable %}
         <li>
-            <a href="{{ path('skcms_locale_homepage',{path:path~childKey}) }}">{{ childKey }}</a>
+            <a href="{{ path('skcms_locale_homepage',{path:path~childKey}) }}">{{ childKey|SKCMSLocaleTranslationDecode }}</a>
             {{ _self.displayChildren(child,path~childKey~'/--/') }}
         </li>
         {% endif %}
