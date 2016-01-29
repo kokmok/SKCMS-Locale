@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Country
  *
- * @ORM\Table()
+ * @ORM\Table(name="SKCountry")
  * @ORM\Entity(repositoryClass="SKCMS\LocaleBundle\Entity\CountryRepository")
  */
 class Country extends TranslatableEntity
