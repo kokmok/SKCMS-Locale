@@ -56,6 +56,7 @@ class TranslationFilesLoader
                 if (in_array($locale, $this->locales)) {
 
                     preg_match('#.+\/([a-zA-Z]+)\.[a-z]{2}\.' . $this->format . '$#', $file, $matches);
+                    if (count($matches)>1) {
                     $domain = $matches[1];
                     if (!array_key_exists($domain, $this->translationTree)) {
                         $this->translationTree[$domain] = [];
@@ -71,6 +72,7 @@ class TranslationFilesLoader
                         $this->unTranslatedTree[$domain] = array_merge_recursive($this->unTranslatedTree[$domain], $untranslated);
                     }
 
+                    }
                 }
             }
 
