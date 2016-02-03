@@ -39,7 +39,7 @@ class MissingTranslationListener
     }
 
     public function missingEvent(MissingTranslationEvent $event){
-
+        return;
         $bundleName = $this->getBundleName($this->request->attributes->get('_controller'));
 
         $kernel = $this->container->get('kernel');
