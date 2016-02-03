@@ -49,27 +49,29 @@ class TranslationFilesLoader
         //make translations trees
         foreach ($files as $file){
             preg_match('#\.([a-z]{2})\.'.$this->format.'$#',$file,$matches);
+            if (count($matches)>1) {
 
-            $locale = $matches[1];
-            if( in_array($locale,$this->locales))
-            {
 
-                preg_match('#.+\/([a-zA-Z]+)\.[a-z]{2}\.'.$this->format.'$#',$file,$matches);
-                $domain = $matches[1];
-                if (!array_key_exists($domain,$this->translationTree)){
-                    $this->translationTree[$domain] = [];
-                }
+                $locale = $matches[1];
+                if (in_array($locale, $this->locales)) {
 
-                $translations = $this->formatTranslations(Yaml::parse($file),$locale);
-                $this->translationTree[$domain] = array_merge_recursive($this->translationTree[$domain],$translations);
-                $untranslated = $this->makeUntranslatedTree($translations,$locale);
-                if (count($untranslated)){
-                    if (!array_key_exists($domain,$this->unTranslatedTree)){
-                        $this->unTranslatedTree[$domain] = [];
+                    preg_match('#.+\/([a-zA-Z]+)\.[a-z]{2}\.' . $this->format . '$#', $file, $matches);
+                    $domain = $matches[1];
+                    if (!array_key_exists($domain, $this->translationTree)) {
+                        $this->translationTree[$domain] = [];
                     }
-                    $this->unTranslatedTree[$domain] = array_merge_recursive($this->unTranslatedTree[$domain],$untranslated);
-                }
 
+                    $translations = $this->formatTranslations(Yaml::parse($file), $locale);
+                    $this->translationTree[$domain] = array_merge_recursive($this->translationTree[$domain], $translations);
+                    $untranslated = $this->makeUntranslatedTree($translations, $locale);
+                    if (count($untranslated)) {
+                        if (!array_key_exists($domain, $this->unTranslatedTree)) {
+                            $this->unTranslatedTree[$domain] = [];
+                        }
+                        $this->unTranslatedTree[$domain] = array_merge_recursive($this->unTranslatedTree[$domain], $untranslated);
+                    }
+
+                }
             }
 
         }
