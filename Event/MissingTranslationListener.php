@@ -32,7 +32,8 @@ class MissingTranslationListener
 
     public function __construct($container)
     {
-        $this->request = $container->get('request');
+
+        $this->request = $container->get('request_stack')->getCurrentRequest();
         $this->entityManager = $container->get('doctrine')->getManager();
         $this->writer = $container->get('translation.writer');
         $this->container = $container;
