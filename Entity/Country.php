@@ -4,6 +4,7 @@ namespace SKCMS\LocaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * Country
@@ -19,6 +20,7 @@ class Country extends TranslatableEntity
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"base"})
      */
     protected $id;
 
@@ -26,6 +28,7 @@ class Country extends TranslatableEntity
      * @var string
      * @Gedmo\Translatable
      * @ORM\Column(name="name", type="string", length=255)
+     * @Groups({"base"})
      */
     private $name;
 
@@ -40,6 +43,7 @@ class Country extends TranslatableEntity
      * @var string
      *
      * @ORM\Column(name="OfficialName", type="string", length=255)
+     * @Groups({"base"})
      */
     private $officialName;
 
@@ -47,28 +51,29 @@ class Country extends TranslatableEntity
      * @var string
      *
      * @ORM\Column(name="ISO", type="string", length=255)
+     * @Groups({"base"})
      */
     private $iSO;
-    
+
     /**
      *
      * @ORM\ManyToOne(targetEntity="SKCMS\LocaleBundle\Entity\Currency")
      */
     private $currency;
-    
+
     /**
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="SKCMS\LocaleBundle\Entity\Language")
-     * 
+     *
      */
     private $languages;
-    
-    
+
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -91,14 +96,14 @@ class Country extends TranslatableEntity
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
         return $this->name;
     }
 
-    
+
 
     /**
      * Set officialName
@@ -116,7 +121,7 @@ class Country extends TranslatableEntity
     /**
      * Get officialName
      *
-     * @return string 
+     * @return string
      */
     public function getOfficialName()
     {
@@ -139,17 +144,17 @@ class Country extends TranslatableEntity
     /**
      * Get iSO
      *
-     * @return string 
+     * @return string
      */
     public function getISO()
     {
         return $this->iSO;
     }
-    
-    
-     public function __toString()
+
+
+    public function __toString()
     {
-        
+
         if (null !== $this->nativeNames && count($this->nativeNames))
         {
             return implode(',',$this->nativeNames->toArray());
@@ -158,7 +163,7 @@ class Country extends TranslatableEntity
         {
             return $this->name;
         }
-        
+
     }
     /**
      * Constructor
@@ -184,14 +189,14 @@ class Country extends TranslatableEntity
     /**
      * Get currency
      *
-     * @return \SKCMS\LocaleBundle\Entity\Currency 
+     * @return \SKCMS\LocaleBundle\Entity\Currency
      */
     public function getCurrency()
     {
         return $this->currency;
     }
 
-    
+
 
     /**
      * Add nativeNames
@@ -217,13 +222,13 @@ class Country extends TranslatableEntity
         $nativeNames->setCountry(null);
         $this->nativeNames->removeElement($nativeNames);
         return $this;
-        
+
     }
 
     /**
      * Get nativeNames
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getNativeNames()
     {
@@ -256,7 +261,7 @@ class Country extends TranslatableEntity
     /**
      * Get languages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLanguages()
     {
