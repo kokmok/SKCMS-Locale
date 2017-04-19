@@ -48,7 +48,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $country->setLocale($locale);
             $country->setName(isset($jsonCountry['translations'][$locale])? $jsonCountry['translations'][$locale]['common']:$jsonCountry['name']['common']);
             $country->setOfficialName($jsonCountry['name']['official']);
-            $country->setIso($jsonCountry['cca3']);
+            $country->setIso($jsonCountry['cca2']);
             
             
             foreach ($jsonCountry['languages'] as $languageIso => $languageName)
