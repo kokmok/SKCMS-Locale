@@ -20,7 +20,7 @@ class Country extends TranslatableEntity
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"base"})
+     * @Groups({"base","company","building"})
      */
     protected $id;
 
@@ -28,7 +28,7 @@ class Country extends TranslatableEntity
      * @var string
      * @Gedmo\Translatable
      * @ORM\Column(name="name", type="string", length=255)
-     * @Groups({"base"})
+     * @Groups({"base","company","building"})
      */
     private $name;
 
@@ -51,7 +51,7 @@ class Country extends TranslatableEntity
      * @var string
      *
      * @ORM\Column(name="ISO", type="string", length=255)
-     * @Groups({"base"})
+     * @Groups({"base","company","building"})
      */
     private $iSO;
 
