@@ -43,7 +43,7 @@ class Country extends TranslatableEntity
      * @var string
      *
      * @ORM\Column(name="OfficialName", type="string", length=255)
-     * @Groups({"base"})
+     * @Groups({"base","company","building"})
      */
     private $officialName;
 
